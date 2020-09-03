@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace WebBrowser.UI
 {
-    public partial class Form1 : Form
+    public partial class GV_Browser : Form
     {
-        public Form1()
+        public GV_Browser()
         {
             InitializeComponent();
             // Load the user's home page.
-            webBrowser1.GoHome();
-            
+            webBrowser1.Navigate("Http://google.com");
+            webBrowser1.ScriptErrorsSuppressed = true;
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)
@@ -53,6 +53,13 @@ namespace WebBrowser.UI
             MessageBox.Show("Developer: Genesis Villalvazo\n" 
                             + "Student ID: gdv0001\n"
                              + "Date Created: 9/2020");
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+           /* int height = Screen.PrimaryScreen.Bounds.Height;
+            int width = Screen.PrimaryScreen.Bounds.Width;*/
+           // this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
     }
 }
