@@ -17,6 +17,7 @@ namespace WebBrowser.UI
             InitializeComponent();
             // Load the user's home page.
             webBrowser1.GoHome();
+            
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)
@@ -27,6 +28,7 @@ namespace WebBrowser.UI
         {
             if (e.KeyCode == Keys.Enter)
             {
+                
                 webBrowser1.Navigate(toolStripTextBox1.Text);
             }
         }
@@ -39,6 +41,18 @@ namespace WebBrowser.UI
         private void toolStripTextBox1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void exitWebBrowserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Developer: Genesis Villalvazo\n" 
+                            + "Student ID: gdv0001\n"
+                             + "Date Created: 9/2020");
         }
     }
 }
