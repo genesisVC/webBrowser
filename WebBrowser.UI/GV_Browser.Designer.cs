@@ -40,6 +40,7 @@
             this.manageHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageBookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -51,7 +52,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -85,31 +85,31 @@
             // newTabToolStripMenuItem
             // 
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.newTabToolStripMenuItem.Text = "New Tab";
             // 
             // closeCurrentTabToolStripMenuItem
             // 
             this.closeCurrentTabToolStripMenuItem.Name = "closeCurrentTabToolStripMenuItem";
-            this.closeCurrentTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeCurrentTabToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.closeCurrentTabToolStripMenuItem.Text = "Close Current Tab";
             // 
             // savePageAsHTMLToolStripMenuItem
             // 
             this.savePageAsHTMLToolStripMenuItem.Name = "savePageAsHTMLToolStripMenuItem";
-            this.savePageAsHTMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.savePageAsHTMLToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.savePageAsHTMLToolStripMenuItem.Text = "Save Page As HTML";
             // 
             // printPageToolStripMenuItem
             // 
             this.printPageToolStripMenuItem.Name = "printPageToolStripMenuItem";
-            this.printPageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.printPageToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.printPageToolStripMenuItem.Text = "Print Page";
             // 
             // exitWebBrowserToolStripMenuItem
             // 
             this.exitWebBrowserToolStripMenuItem.Name = "exitWebBrowserToolStripMenuItem";
-            this.exitWebBrowserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitWebBrowserToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.exitWebBrowserToolStripMenuItem.Text = "Exit Web Browser";
             this.exitWebBrowserToolStripMenuItem.Click += new System.EventHandler(this.exitWebBrowserToolStripMenuItem_Click);
             // 
@@ -141,6 +141,13 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -197,7 +204,6 @@
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(400, 25);
             this.toolStripTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox1_KeyDown);
@@ -252,13 +258,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1469, 529);
             this.tabControl1.TabIndex = 1;
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
             // GV_Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,7 +270,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GV_Browser";
             this.Text = "GV Browser";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
