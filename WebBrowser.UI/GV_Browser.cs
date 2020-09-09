@@ -39,5 +39,13 @@ namespace WebBrowser.UI
             int width = Screen.PrimaryScreen.Bounds.Width;*/
            // this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
+
+        private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TabPagesControl tabs = new TabPagesControl();
+           /* string title = "TabPage " + (tabs.tabControl1.TabCount + 1).ToString();
+            TabPage myTabPage = new TabPage(title);*/
+         
+        }
     }
 }
