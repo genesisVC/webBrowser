@@ -41,6 +41,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tabPagesControl1 = new WebBrowser.UI.TabPagesControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,12 +136,20 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // tabPagesControl1
+            // 
+            this.tabPagesControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabPagesControl1.Name = "tabPagesControl1";
+            this.tabPagesControl1.Size = new System.Drawing.Size(1233, 646);
+            this.tabPagesControl1.TabIndex = 1;
+            // 
             // GV_Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1469, 593);
+            this.Controls.Add(this.tabPagesControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GV_Browser";
@@ -166,6 +175,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private TabPagesControl tabPagesControl1;
     }
 }
 
