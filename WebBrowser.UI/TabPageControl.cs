@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
+using System.Drawing.Text;
 
 namespace WebBrowser.UI
 {
@@ -17,6 +18,11 @@ namespace WebBrowser.UI
         Stack<string> forwardPages = new Stack<string>();
         String currentUrl="";
         String previousUrl="";
+        private System.Windows.Forms.WebBrowser webBrowser;
+        private TabControl tabControlX;
+        GV_Browser newTab;
+
+
         public TabPagesControl()
         {
             InitializeComponent();
@@ -25,6 +31,9 @@ namespace WebBrowser.UI
             webBrowser1.ScriptErrorsSuppressed = true;
             backPages.Clear();
             forwardPages.Clear();
+            
+            
+            
         }
 
 
@@ -76,8 +85,9 @@ namespace WebBrowser.UI
         {
            
         }
-        private void addressBar_KeyDown(object sender, KeyEventArgs e)
+        public void addressBar_KeyDown(object sender, KeyEventArgs e)
         {
+            //newTab = new GV_Browser();
             if (e.KeyCode == Keys.Enter)
             {
                 currentUrl = webBrowser1.Url.ToString();
@@ -87,31 +97,71 @@ namespace WebBrowser.UI
                     backPages.Push(previousUrl);
                 }
 
-                webBrowser1.Navigate(addressBar.Text);
+
                 
+                webBrowser1.Parent = tabControl1.SelectedTab;
+                
+                
+                
+                
+                webBrowser1.Navigate(addressBar.Text);
+               
+
+
             }
         }
 
         private void goButton_Click(object sender, EventArgs e)
         {
-            previousUrl = currentUrl;
-            webBrowser1.Navigate(addressBar.Text);
             currentUrl = webBrowser1.Url.ToString();
+            previousUrl = currentUrl;
+            if (previousUrl != "")
+            {
+                backPages.Push(previousUrl);
+            }
+            webBrowser1.Navigate(addressBar.Text);
             
-          /*  backPages.Push("www.google.com");
-            forwardPages.Push(currentUrl);*/
+            
         }
 
-        /**private void exitWebBrowserToolStripMenuItem_Click(object sender, EventArgs e)
-         {
-             //this.Close();
-         }*/
+        public void addTab()
+        {
+            /*TabControl dynamicTabControl = new TabControl();
+            Controls.Add(dynamicTabControl);*/
+           /* string title = "TabPage " + (tabControl1.TabCount + 1).ToString();
 
-        /* private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-         {
-             MessageBox.Show("Developer: Genesis Villalvazo\n"
-                             + "Student ID: gdv0001\n"
-                              + "Date Created: 9/2020");
-         }*/
+            TabPage myTabPage = new TabPage(title);
+            tabControl1.TabPages.Add(myTabPage);*/
+        }
+        public void webBrowswer_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            addressBar.Text = webBrowser1.Url.ToString();
+        }
+       public void createBrowser()
+        {
+            //addressBar_KeyDown(object sender, KeyEventArgs e);
+
+           /* // Delete This
+            GV_Browser newTab = new GV_Browser();
+            webBrowser = new System.Windows.Forms.WebBrowser();
+            tabControlX = new TabControl();
+            webBrowser.ScriptErrorsSuppressed = true;
+            webBrowser.Location = new Point(0, 0);
+            webBrowser.Dock = DockStyle.Fill;
+            webBrowser.Visible = true;
+            //webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
+            webBrowser.Navigate("http://bing.com");
+
+            tabControlX.Anchor = AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Right & AnchorStyles.Left;
+            tabControlX.TabPages.Add("New Tab");
+            tabControlX.SelectTab(0);
+            tabControlX.SelectedTab.Controls.Add(webBrowser);
+            tabControlX.Size = new Size(500, 300);
+            tabControlX.Location = new Point(0, 100);
+            
+            newTab.tabPagesControl1.Controls.Add(webBrowser);
+            //tabPage1.Controls.Add(webBrowser);
+            //tabPagesControl1.tabControl1.TabPages.Add(myTabPage); */
+        }
     }
 }
