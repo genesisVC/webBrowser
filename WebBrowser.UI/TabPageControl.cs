@@ -18,7 +18,8 @@ namespace WebBrowser.UI
         Stack<string> forwardPages = new Stack<string>();
         String currentUrl="";
         String previousUrl="";
-        private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.WebBrowser webBrowser =
+            new System.Windows.Forms.WebBrowser();
         private TabControl tabControlX;
         GV_Browser newTab;
 
@@ -29,6 +30,7 @@ namespace WebBrowser.UI
             // Load the user's home page.
             webBrowser1.Navigate("Http://google.com");
             webBrowser1.ScriptErrorsSuppressed = true;
+            //webBrowser.ScriptErrorsSuppressed = true;
             backPages.Clear();
             forwardPages.Clear();
             
@@ -46,39 +48,46 @@ namespace WebBrowser.UI
         private void backButton_Click(object sender, EventArgs e)
         {
 
-            //webBrowser1.GoBack();
-            currentUrl = webBrowser1.Url.ToString();
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
+            currentUrl = webBrowser.Url.ToString();
             forwardPages.Push(currentUrl);
-            if (backPages.Count() == 0)
+            /*if (backPages.Count() == 0)
             {
-                webBrowser1.Navigate("Http://google.com");
-            }
-            else
+                webBrowser.Navigate("Http://google.com");
+            }*/
+            if (webBrowser.CanGoBack)
             {
-              webBrowser1.Navigate (backPages.Pop());
+                webBrowser.Navigate(backPages.Pop());
             }
-            
+           
         }
 
         private void forwardButton_Click(object sender, EventArgs e)
         {
             // webBrowser1.GoForward();
-            currentUrl = webBrowser1.Url.ToString();
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
+
+            currentUrl = webBrowser.Url.ToString();
             backPages.Push(currentUrl);
-            if (forwardPages.Count() == 0) 
+            /*if (forwardPages.Count() == 0) 
             {
-                webBrowser1.Navigate("Http://google.com");
-            }
-            else
+                webBrowser.Navigate("Http://google.com");
+            }*/
+            if (forwardPages.Count() != 0) 
             {
-                webBrowser1.Navigate(forwardPages.Pop());
+                webBrowser.Navigate(forwardPages.Pop());
+                addressBar.Text = f
             }
 
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            webBrowser1.Refresh();
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
+            webBrowser.Refresh();
         }
 
         private void addressBar_Click(object sender, EventArgs e)
@@ -87,10 +96,12 @@ namespace WebBrowser.UI
         }
         public void addressBar_KeyDown(object sender, KeyEventArgs e)
         {
-            //newTab = new GV_Browser();
+            
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
             if (e.KeyCode == Keys.Enter)
             {
-                currentUrl = webBrowser1.Url.ToString();
+                currentUrl = webBrowser.Url.ToString();
                 previousUrl = currentUrl;
                 if (previousUrl != "")
                 {
@@ -98,13 +109,7 @@ namespace WebBrowser.UI
                 }
 
 
-                
-                webBrowser1.Parent = tabControl1.SelectedTab;
-                
-                
-                
-                
-                webBrowser1.Navigate(addressBar.Text);
+                webBrowser.Navigate(addressBar.Text);
                
 
 
@@ -113,15 +118,19 @@ namespace WebBrowser.UI
 
         private void goButton_Click(object sender, EventArgs e)
         {
-            currentUrl = webBrowser1.Url.ToString();
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
+            currentUrl = webBrowser.Url.ToString();
             previousUrl = currentUrl;
             if (previousUrl != "")
             {
                 backPages.Push(previousUrl);
             }
-            webBrowser1.Navigate(addressBar.Text);
             
-            
+
+            webBrowser.Navigate(addressBar.Text);
+
+
         }
 
         public void addTab()
@@ -135,7 +144,7 @@ namespace WebBrowser.UI
         }
         public void webBrowswer_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            addressBar.Text = webBrowser1.Url.ToString();
+            addressBar.Text = webBrowser.Url.ToString();
         }
        public void createBrowser()
         {

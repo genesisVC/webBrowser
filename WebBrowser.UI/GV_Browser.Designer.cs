@@ -143,7 +143,8 @@
             // 
             // tabPagesControl1
             // 
-            this.tabPagesControl1.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.tabPagesControl1.AutoSize = true;
+            this.tabPagesControl1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.tabPagesControl1.Location = new System.Drawing.Point(0, 27);
             this.tabPagesControl1.Name = "tabPagesControl1";
             this.tabPagesControl1.Size = new System.Drawing.Size(1233, 646);
