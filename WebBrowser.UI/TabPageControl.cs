@@ -20,8 +20,7 @@ namespace WebBrowser.UI
         String previousUrl="";
         private System.Windows.Forms.WebBrowser webBrowser =
             new System.Windows.Forms.WebBrowser();
-        private TabControl tabControlX;
-        GV_Browser newTab;
+        
 
 
         public TabPagesControl()
@@ -30,7 +29,7 @@ namespace WebBrowser.UI
             // Load the user's home page.
             webBrowser1.Navigate("Http://google.com");
             webBrowser1.ScriptErrorsSuppressed = true;
-            //webBrowser.ScriptErrorsSuppressed = true;
+          
             backPages.Clear();
             forwardPages.Clear();
             
@@ -52,11 +51,8 @@ namespace WebBrowser.UI
                 System.Windows.Forms.WebBrowser;
             currentUrl = webBrowser.Url.ToString();
             forwardPages.Push(currentUrl);
-            /*if (backPages.Count() == 0)
-            {
-                webBrowser.Navigate("Http://google.com");
-            }*/
-            if (webBrowser.CanGoBack)
+
+            if (backPages.Count() != 0)
             {
                 webBrowser.Navigate(backPages.Pop());
             }
@@ -71,14 +67,11 @@ namespace WebBrowser.UI
 
             currentUrl = webBrowser.Url.ToString();
             backPages.Push(currentUrl);
-            /*if (forwardPages.Count() == 0) 
-            {
-                webBrowser.Navigate("Http://google.com");
-            }*/
+            
             if (forwardPages.Count() != 0) 
             {
                 webBrowser.Navigate(forwardPages.Pop());
-                addressBar.Text = f
+                
             }
 
         }
@@ -133,44 +126,8 @@ namespace WebBrowser.UI
 
         }
 
-        public void addTab()
-        {
-            /*TabControl dynamicTabControl = new TabControl();
-            Controls.Add(dynamicTabControl);*/
-           /* string title = "TabPage " + (tabControl1.TabCount + 1).ToString();
-
-            TabPage myTabPage = new TabPage(title);
-            tabControl1.TabPages.Add(myTabPage);*/
-        }
-        public void webBrowswer_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            addressBar.Text = webBrowser.Url.ToString();
-        }
-       public void createBrowser()
-        {
-            //addressBar_KeyDown(object sender, KeyEventArgs e);
-
-           /* // Delete This
-            GV_Browser newTab = new GV_Browser();
-            webBrowser = new System.Windows.Forms.WebBrowser();
-            tabControlX = new TabControl();
-            webBrowser.ScriptErrorsSuppressed = true;
-            webBrowser.Location = new Point(0, 0);
-            webBrowser.Dock = DockStyle.Fill;
-            webBrowser.Visible = true;
-            //webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
-            webBrowser.Navigate("http://bing.com");
-
-            tabControlX.Anchor = AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Right & AnchorStyles.Left;
-            tabControlX.TabPages.Add("New Tab");
-            tabControlX.SelectTab(0);
-            tabControlX.SelectedTab.Controls.Add(webBrowser);
-            tabControlX.Size = new Size(500, 300);
-            tabControlX.Location = new Point(0, 100);
-            
-            newTab.tabPagesControl1.Controls.Add(webBrowser);
-            //tabPage1.Controls.Add(webBrowser);
-            //tabPagesControl1.tabControl1.TabPages.Add(myTabPage); */
-        }
+       
+       
+      
     }
 }

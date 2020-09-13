@@ -15,7 +15,7 @@ namespace WebBrowser.UI
     {
         TabPage myTabPage;
         private System.Windows.Forms.WebBrowser webBrowser;
-        private TabControl tabControlX;
+        int i = 1;
         
        
         public GV_Browser()
@@ -44,9 +44,10 @@ namespace WebBrowser.UI
         private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TabPagesControl tabs = new TabPagesControl();
-            //tabs.addTab();
 
-            string title = "TabPage " + (tabs.tabControl1.TabCount + 1).ToString();
+           
+            //string title = "New Tab" + (tabs.tabControl1.TabCount + 1).ToString();
+            string title = "New Tab" + (tabs.tabControl1.TabCount + i++).ToString();
 
             myTabPage = new TabPage(title);
 
