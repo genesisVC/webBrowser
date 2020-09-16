@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="GV_Browser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebBrowser.Logic\WebBrowser.Logic.csproj">
-      <Project>{91b91ade-f5b7-4872-9678-e324f6e2a80f}</Project>
+      <Project>{ac0bb396-cdfb-4494-8e42-4d89fd08a2c2}</Project>
       <Name>WebBrowser.Logic</Name>
     </ProjectReference>
   </ItemGroup>
