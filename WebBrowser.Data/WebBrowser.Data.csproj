@@ -4,4 +4,37 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Bookmarks.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Bookmarks.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="History.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>History.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="HistoryDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HistoryDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Bookmarks.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Bookmarks.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="History.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>History.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="HistoryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HistoryDataSet.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>
