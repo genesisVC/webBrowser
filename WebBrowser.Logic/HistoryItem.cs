@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebBrowser.Logic
 {
-    class HistoryItem
+    public class HistoryItem
     {
         public DateTime Date { get; set; }
         public string URL { get; set; }
