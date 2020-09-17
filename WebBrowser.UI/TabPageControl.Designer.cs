@@ -36,7 +36,7 @@
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.addressBar = new System.Windows.Forms.ToolStripTextBox();
             this.goButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.bookmarkBtn = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -54,7 +54,7 @@
             this.toolStripButton4,
             this.addressBar,
             this.goButton,
-            this.toolStripButton6});
+            this.bookmarkBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.ShowItemToolTips = false;
@@ -120,14 +120,15 @@
             this.goButton.Text = "go";
             this.goButton.Click += new System.EventHandler(this.goButton_Click);
             // 
-            // toolStripButton6
+            // bookmarkBtn
             // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton6.Text = "bookmark";
+            this.bookmarkBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bookmarkBtn.Image = ((System.Drawing.Image)(resources.GetObject("bookmarkBtn.Image")));
+            this.bookmarkBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bookmarkBtn.Name = "bookmarkBtn";
+            this.bookmarkBtn.Size = new System.Drawing.Size(23, 22);
+            this.bookmarkBtn.Text = "bookmark";
+            this.bookmarkBtn.Click += new System.EventHandler(this.bookmarkBtn_Click);
             // 
             // tabControl1
             // 
@@ -182,7 +183,7 @@
         private System.Windows.Forms.ToolStripButton refreshButton;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton goButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton bookmarkBtn;
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.WebBrowser webBrowser1;
         public System.Windows.Forms.TabPage tabPage1;

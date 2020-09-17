@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
 using System.Drawing.Text;
+using WebBrowser.Logic;
+using System.Net;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 
 namespace WebBrowser.UI
 {
@@ -18,6 +22,7 @@ namespace WebBrowser.UI
         Stack<string> forwardPages = new Stack<string>();
         String currentUrl="";
         String previousUrl="";
+        String title;
         private System.Windows.Forms.WebBrowser webBrowser =
             new System.Windows.Forms.WebBrowser();
         
@@ -55,6 +60,7 @@ namespace WebBrowser.UI
             if (backPages.Count() != 0)
             {
                 webBrowser.Navigate(backPages.Pop());
+                webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
             }
            
         }
@@ -71,7 +77,8 @@ namespace WebBrowser.UI
             if (forwardPages.Count() != 0) 
             {
                 webBrowser.Navigate(forwardPages.Pop());
-                
+                webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
+
             }
 
         }
@@ -103,7 +110,7 @@ namespace WebBrowser.UI
 
 
                 webBrowser.Navigate(addressBar.Text);
-               
+                webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
 
 
             }
@@ -119,15 +126,59 @@ namespace WebBrowser.UI
             {
                 backPages.Push(previousUrl);
             }
+
+
+            
+            webBrowser.Navigate(addressBar.Text);
+            
+            webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
             
 
-            webBrowser.Navigate(addressBar.Text);
+            
+            
+        }
+
+        private void bookmarkBtn_Click(object sender, EventArgs e)
+        {
+            string source;
+            WebClient x = new WebClient();
+            if (webBrowser.Url != null)
+            {
+                source = x.DownloadString(webBrowser.Url);
+            }
+            else
+            {
+                source = x.DownloadString("www.google.com");
+            }
+            string title = Regex.Match(source, @"\<title\b[^>]*\>\s*(?<Title>[\s\S]*?)\</title\>",
+            RegexOptions.IgnoreCase).Groups["Title"].Value;
+
+            var item = new BookmarkItem();
+            item.Title = title;
+            item.URL = webBrowser.Url.ToString();
+            BookmarkManager.AddItem(item);
 
 
         }
+        private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            
+                
+            WebClient x = new WebClient();
+            string source = x.DownloadString(webBrowser.Url);
+          
+            title = Regex.Match(source, @"\<title\b[^>]*\>\s*(?<Title>[\s\S]*?)\</title\>",
+            RegexOptions.IgnoreCase).Groups["Title"].Value;
 
-       
-       
-      
+            var item = new HistoryItem();
+            item.Date = DateTime.Now;
+            item.Title = title;
+            item.URL = webBrowser.Url.ToString();
+            //MessageBox.Show(item.Title);
+            HistoryManager.AddItem(item);
+
+            
+
+        }
     }
 }

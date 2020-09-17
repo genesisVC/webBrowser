@@ -21,7 +21,7 @@ namespace WebBrowser.UI
         private void HistoryManager_Load(object sender, EventArgs e)
         {
             var items = HistoryManager.GetItems();
-            HistoryManagerList.Items.Clear();
+            //HistoryManagerList.Items.Clear();
             
             foreach(var item in items)
             {

@@ -136,12 +136,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebBrowserDB1.mdf">
+    <Content Include="WebBrowserDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="WebBrowserDB1_log.ldf">
+    <Content Include="WebBrowserDB_log.ldf">
+      <DependentUpon>WebBrowserDB.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>WebBrowserDB1.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

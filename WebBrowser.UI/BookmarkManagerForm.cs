@@ -21,11 +21,12 @@ namespace WebBrowser.UI
         private void BookmarkManagerForm_Load(object sender, EventArgs e)
         {
             var items = BookmarkManager.GetItems();
-            BookmarkManagerList.Items.Clear();
+            //BookmarkManagerList.Items.Clear();
 
             foreach (var item in items)
             {
-                BookmarkManagerList.Items.Add(string.Format("{1}-({2})", item.Title, item.URL));
+                BookmarkManagerList.Items.Add(string.Format("{0}-({1})", item.Title, item.URL));
             }
+        }
     }
 }

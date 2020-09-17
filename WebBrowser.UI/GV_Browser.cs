@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -21,8 +22,8 @@ namespace WebBrowser.UI
         public GV_Browser()
         {
             InitializeComponent();
-
             
+
         }
 
        
@@ -69,6 +70,18 @@ namespace WebBrowser.UI
         private void closeCurrentTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabPagesControl1.tabControl1.TabPages.Remove(tabPagesControl1.tabControl1.SelectedTab);
+        }
+
+        private void manageHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var itemsForm = new HistoryManagerForm();
+            itemsForm.ShowDialog();
+        }
+
+        private void manageBookmarksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var itemsForm = new BookmarkManagerForm();
+            itemsForm.ShowDialog();
         }
     }
 }
