@@ -22,13 +22,14 @@ namespace WebBrowser.UI
         {
             var items = HistoryManager.GetItems();
             //HistoryManagerList.Items.Clear();
-            
-            foreach(var item in items)
-            {
-                HistoryManagerList.Items.Add(string.Format("[{0}]--{1}-({2})", item.Date, item.Title, item.URL));
+           
+                foreach (var item in items)
+                {
+
+                    HistoryManagerList.Items.Add(string.Format("[{0}]--{1}-({2})", item.Date, item.Title, item.URL));
+                }
             }
             
-            
-        }
+        
     }
 }

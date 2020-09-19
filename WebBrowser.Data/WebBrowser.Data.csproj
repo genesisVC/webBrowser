@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookmarkDataSet.cs">
+      <DependentUpon>BookmarkDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BookmarkDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +74,9 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryDataSet.cs">
+      <DependentUpon>HistoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="HistoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

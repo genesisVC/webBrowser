@@ -18,11 +18,12 @@ namespace WebBrowser.UI
 {
     public partial class TabPagesControl : UserControl
     {
-        Stack<string> backPages = new Stack<string>();
-        Stack<string> forwardPages = new Stack<string>();
-        String currentUrl="";
-        String previousUrl="";
-        String title;
+        private Stack<string> backPages = new Stack<string>();
+        private Stack<string> forwardPages = new Stack<string>();
+        private String currentUrl="";
+        private String previousUrl="";
+        private String title = "";
+        private String source = "";
         private System.Windows.Forms.WebBrowser webBrowser =
             new System.Windows.Forms.WebBrowser();
         
@@ -140,16 +141,13 @@ namespace WebBrowser.UI
 
         private void bookmarkBtn_Click(object sender, EventArgs e)
         {
-            string source;
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
             WebClient x = new WebClient();
-            if (webBrowser.Url != null)
-            {
+            //currentUrl = webBrowser.Url.ToString();
+            
                 source = x.DownloadString(webBrowser.Url);
-            }
-            else
-            {
-                source = x.DownloadString("www.google.com");
-            }
+           
             string title = Regex.Match(source, @"\<title\b[^>]*\>\s*(?<Title>[\s\S]*?)\</title\>",
             RegexOptions.IgnoreCase).Groups["Title"].Value;
 
@@ -165,7 +163,7 @@ namespace WebBrowser.UI
             
                 
             WebClient x = new WebClient();
-            string source = x.DownloadString(webBrowser.Url);
+            source = x.DownloadString(webBrowser.Url);
           
             title = Regex.Match(source, @"\<title\b[^>]*\>\s*(?<Title>[\s\S]*?)\</title\>",
             RegexOptions.IgnoreCase).Groups["Title"].Value;
