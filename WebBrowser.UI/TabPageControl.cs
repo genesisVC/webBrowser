@@ -38,8 +38,7 @@ namespace WebBrowser.UI
           
             backPages.Clear();
             forwardPages.Clear();
-            
-            
+
             
         }
 
@@ -62,6 +61,7 @@ namespace WebBrowser.UI
             {
                 webBrowser.Navigate(backPages.Pop());
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
+                webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted2);
             }
            
         }
@@ -79,7 +79,7 @@ namespace WebBrowser.UI
             {
                 webBrowser.Navigate(forwardPages.Pop());
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
-
+                webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted2);
             }
 
         }
@@ -128,15 +128,11 @@ namespace WebBrowser.UI
                 backPages.Push(previousUrl);
             }
 
-
-            
             webBrowser.Navigate(addressBar.Text);
             
             webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
-            
+ 
 
-            
-            
         }
 
         private void bookmarkBtn_Click(object sender, EventArgs e)
@@ -176,6 +172,13 @@ namespace WebBrowser.UI
             HistoryManager.AddItem(item);
 
             
+        }
+        private void webBrowser_DocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+
+            addressBar.Text = webBrowser.Url.ToString();
+
 
         }
     }

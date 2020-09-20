@@ -30,23 +30,7 @@ namespace WebBrowser.UI
                 BookmarkManagerList.Items.Add(string.Format("{0}-({1})", item.Title, item.URL));
             }
 
-            /*foreach (var item in items)
-            {
-                bool found = false;
-                foreach (var listItem in BookmarkManagerList.Items)
-                {
-
-                    if (listItem.ToString().Contains(string.Format("{0}", item.Title)))
-                    {
-                        found = true;
-                        break;
-                    }
-
-                }
-                if (!found)
-
-                    BookmarkManagerList.Items.Add(string.Format("{0}-({1})", item.Title, item.URL));
-            }*/
+           
         }
 
     }   

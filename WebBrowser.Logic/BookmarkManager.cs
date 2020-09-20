@@ -15,6 +15,7 @@ namespace WebBrowser.Logic
         {
             var adapter = new BookmarkTableAdapter();
             var rows = adapter.GetData();
+            //Ensure no duplicate entries are added to table.
             if (rows.Count != 0)
             {
                 count = 0;
@@ -23,7 +24,7 @@ namespace WebBrowser.Logic
                     if (row.Title.Equals(item.Title))
                     {
                         count++;
-                        //adapter.Insert(item.URL, item.Title);
+                        
                     }
                 } 
                 if (count == 0)
