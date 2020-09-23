@@ -35,7 +35,7 @@ namespace WebBrowser.UI
             // Load the user's home page.
             webBrowser1.Navigate("Http://google.com");
             webBrowser1.ScriptErrorsSuppressed = true;
-          
+           // webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
             backPages.Clear();
             forwardPages.Clear();
 
@@ -111,9 +111,10 @@ namespace WebBrowser.UI
 
 
                 webBrowser.Navigate(addressBar.Text);
+                //webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
-
-
+                
+                
             }
         }
 
@@ -180,6 +181,44 @@ namespace WebBrowser.UI
             addressBar.Text = webBrowser.Url.ToString();
 
 
+        }
+
+        private void webBrowser_ProgressChange(Object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            ProgressBar1.Maximum =  (int)e.MaximumProgress;
+            //LoadingLabel1.Text = "Loading";
+            /*
+             ProgressBar1.Value = (int)e.CurrentProgress;*/
+
+            //ProgressBar1.Maximum = 100;
+            //ProgressBar1.Minimum = 0;
+            try
+            {
+                if ((e.CurrentProgress > 0))
+                {
+                    ProgressBar1.Value = (int)e.CurrentProgress;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+
+            /*  try
+              {
+                  ProgressBar1.Value = Convert.ToInt32(e.CurrentProgress);
+                  ProgressBar1.Maximum = Convert.ToInt32(e.MaximumProgress);
+
+              }
+              catch
+              {
+
+              }*/
+            webBrowser.StatusTextChanged+= webBrowser_StatusTextChanged;
+        }
+        private void webBrowser_StatusTextChanged(object sender, EventArgs e)
+        {
+            LoadingLabel1.Text = webBrowser.StatusText;
         }
     }
 }
