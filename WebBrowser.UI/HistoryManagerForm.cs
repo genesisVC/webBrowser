@@ -110,9 +110,6 @@ namespace WebBrowser.UI
             int count = HistoryManagerList.Items.Count;
             foreach (var item in items)
             {
-
-                
-
                     HistoryManager.DeleteItem(item);
                     HistoryManagerList.Items.RemoveAt(0);
                 

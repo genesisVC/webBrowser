@@ -59,15 +59,21 @@ namespace WebBrowser.Logic
 
                 results.Add(item);
             }
-
+                return results;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
+            return null;
             
-            return results;
+            
+        }
+
+        public static void deleteItem(BookmarkItem item)
+        {
+            var adapter = new BookmarkTableAdapter();
+            adapter.DeleteQuery(item.URL,item.Title);
         }
     }
 }
