@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WebBrowser.Data.BookmarkDataSetTableAdapters;
 
 namespace WebBrowser.Logic
@@ -45,7 +46,9 @@ namespace WebBrowser.Logic
         {
             var adapter = new BookmarkTableAdapter();
             var results = new List<BookmarkItem>();
-            var rows = adapter.GetData();
+            try
+            {
+                var rows = adapter.GetData();
 
             foreach (var row in rows)
             {
@@ -56,6 +59,14 @@ namespace WebBrowser.Logic
 
                 results.Add(item);
             }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            
             return results;
         }
     }

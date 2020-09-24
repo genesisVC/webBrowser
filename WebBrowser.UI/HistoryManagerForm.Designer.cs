@@ -70,6 +70,7 @@
             this.deleteHistoryElement.TabIndex = 3;
             this.deleteHistoryElement.Text = "Delete";
             this.deleteHistoryElement.UseVisualStyleBackColor = true;
+            this.deleteHistoryElement.Click += new System.EventHandler(this.deleteHistoryElement_Click);
             // 
             // ClearHistoryContentButton
             // 
@@ -79,6 +80,7 @@
             this.ClearHistoryContentButton.TabIndex = 4;
             this.ClearHistoryContentButton.Text = "Clear Content";
             this.ClearHistoryContentButton.UseVisualStyleBackColor = true;
+            this.ClearHistoryContentButton.Click += new System.EventHandler(this.ClearHistoryContentButton_Click);
             // 
             // HistoryManagerForm
             // 

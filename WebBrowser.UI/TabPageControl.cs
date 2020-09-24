@@ -160,8 +160,16 @@ namespace WebBrowser.UI
             
                 
             WebClient x = new WebClient();
-            source = x.DownloadString(webBrowser.Url);
-          
+            try
+            {
+                source = x.DownloadString(webBrowser.Url);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please enter valid URL.");
+                MessageBox.Show(ex.ToString());
+                
+            }
             title = Regex.Match(source, @"\<title\b[^>]*\>\s*(?<Title>[\s\S]*?)\</title\>",
             RegexOptions.IgnoreCase).Groups["Title"].Value;
 

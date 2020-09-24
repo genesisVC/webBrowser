@@ -32,5 +32,18 @@ namespace WebBrowser.Logic
             }
             return results;
         }
+
+        public static void DeleteItem(HistoryItem item)
+        {
+            
+            var adapter = new HistoryTableAdapter();
+            adapter.DeleteQuery(item.URL,item.Title,item.Date);
+            
+        }
+        public static void ClearItems(HistoryItem item)
+        {
+            var adapter = new HistoryTableAdapter();
+            
+        }
     }
 }
