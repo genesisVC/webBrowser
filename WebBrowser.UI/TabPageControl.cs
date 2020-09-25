@@ -226,7 +226,7 @@ namespace WebBrowser.UI
         }
         private void webBrowser_StatusTextChanged(object sender, EventArgs e)
         {
-            LoadingLabel1.Text = webBrowser.StatusText;
+            //LoadingLabel1.Text = webBrowser.StatusText;
         }
     }
 }
