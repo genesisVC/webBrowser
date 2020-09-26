@@ -15,31 +15,33 @@ namespace WebBrowser.Logic
         public static void AddItem(BookmarkItem item)
         {
             var adapter = new BookmarkTableAdapter();
-            var rows = adapter.GetData();
-            //Ensure no duplicate entries are added to table.
-            if (rows.Count != 0)
-            {
-                count = 0;
-                foreach (var row in rows)
-                {
-                    if (row.Title.Equals(item.Title))
-                    {
-                        count++;
-                        
-                    }
-                } 
-                if (count == 0)
-                {
-                adapter.Insert(item.URL, item.Title);
-            
-                } 
-            }
 
-           
-            else
-            {
-                adapter.Insert(item.URL, item.Title);
-            }
+                var rows = adapter.GetData();
+                //Ensure no duplicate entries are added to table.
+                if (rows.Count != 0)
+                {
+                    count = 0;
+                    foreach (var row in rows)
+                    {
+                        if (row.Title.Equals(item.Title))
+                        {
+                            count++;
+
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        adapter.Insert(item.URL, item.Title);
+
+                    }
+                }
+
+
+                else
+                {
+                    adapter.Insert(item.URL, item.Title);
+                }
+
         }
 
         public static List<BookmarkItem> GetItems()
@@ -61,9 +63,12 @@ namespace WebBrowser.Logic
             }
                 return results;
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Please rebuild before running. To" +
+                   "not get this error. Something about running |DataDirectory|" +
+                   "reference keeps making this occur every now and then.");
+                Application.Exit();
             }
             return null;
             

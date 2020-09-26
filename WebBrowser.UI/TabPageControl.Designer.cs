@@ -33,7 +33,7 @@
             this.backButton = new System.Windows.Forms.ToolStripButton();
             this.forwardButton = new System.Windows.Forms.ToolStripButton();
             this.refreshButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.HomeButton = new System.Windows.Forms.ToolStripButton();
             this.addressBar = new System.Windows.Forms.ToolStripTextBox();
             this.goButton = new System.Windows.Forms.ToolStripButton();
             this.bookmarkBtn = new System.Windows.Forms.ToolStripButton();
@@ -55,7 +55,7 @@
             this.backButton,
             this.forwardButton,
             this.refreshButton,
-            this.toolStripButton4,
+            this.HomeButton,
             this.addressBar,
             this.goButton,
             this.bookmarkBtn});
@@ -96,14 +96,15 @@
             this.refreshButton.Text = "refresh";
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
-            // toolStripButton4
+            // HomeButton
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "home";
+            this.HomeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.HomeButton.Image = ((System.Drawing.Image)(resources.GetObject("HomeButton.Image")));
+            this.HomeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(23, 22);
+            this.HomeButton.Text = "home";
+            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             // 
             // addressBar
             // 
@@ -211,7 +212,7 @@
         private System.Windows.Forms.ToolStripButton backButton;
         private System.Windows.Forms.ToolStripButton forwardButton;
         private System.Windows.Forms.ToolStripButton refreshButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton HomeButton;
         private System.Windows.Forms.ToolStripButton goButton;
         private System.Windows.Forms.ToolStripButton bookmarkBtn;
         public System.Windows.Forms.TabControl tabControl1;
@@ -219,7 +220,7 @@
         public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.ToolStripTextBox addressBar;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar ProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel LoadingLabel1;
+        public System.Windows.Forms.ToolStripProgressBar ProgressBar1;
     }
 }

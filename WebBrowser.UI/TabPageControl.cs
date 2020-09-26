@@ -26,6 +26,7 @@ namespace WebBrowser.UI
         private String source = "";
         private System.Windows.Forms.WebBrowser webBrowser =
             new System.Windows.Forms.WebBrowser();
+        string body;
         
 
 
@@ -60,6 +61,7 @@ namespace WebBrowser.UI
             if (backPages.Count() != 0)
             {
                 webBrowser.Navigate(backPages.Pop());
+                webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted2);
             }
@@ -78,6 +80,7 @@ namespace WebBrowser.UI
             if (forwardPages.Count() != 0) 
             {
                 webBrowser.Navigate(forwardPages.Pop());
+                webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted2);
             }
@@ -89,6 +92,7 @@ namespace WebBrowser.UI
             webBrowser = tabControl1.SelectedTab.Controls[0] as
                 System.Windows.Forms.WebBrowser;
             webBrowser.Refresh();
+            webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
         }
 
         private void addressBar_Click(object sender, EventArgs e)
@@ -109,12 +113,13 @@ namespace WebBrowser.UI
                     backPages.Push(previousUrl);
                 }
 
-
+                
                 webBrowser.Navigate(addressBar.Text);
-                //webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
+                
+               webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
                 webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
                 
-                
+
             }
         }
 
@@ -128,11 +133,13 @@ namespace WebBrowser.UI
             {
                 backPages.Push(previousUrl);
             }
-
-            webBrowser.Navigate(addressBar.Text);
             
+            webBrowser.Navigate(addressBar.Text);
+
+            webBrowser.ProgressChanged += new WebBrowserProgressChangedEventHandler(webBrowser_ProgressChange);
+
             webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webBrowser_DocumentCompleted);
- 
+           
 
         }
 
@@ -157,8 +164,14 @@ namespace WebBrowser.UI
         }
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            
-                
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+                System.Windows.Forms.WebBrowser;
+            /*if (webBrowser.ReadyState != WebBrowserReadyState.Complete)
+                return;*/
+            if (e.Url.AbsolutePath != (sender as System.Windows.Forms.WebBrowser).Url.AbsolutePath)
+                return;
+            if (body == webBrowser.Document.Body.InnerHtml) return;
+             body = webBrowser.Document.Body.InnerHtml;
             WebClient x = new WebClient();
             try
             {
@@ -179,27 +192,25 @@ namespace WebBrowser.UI
             item.URL = webBrowser.Url.ToString();
             //MessageBox.Show(item.Title);
             HistoryManager.AddItem(item);
+            webBrowser.StatusTextChanged += webBrowser_StatusTextChanged;
 
-            
+
         }
         private void webBrowser_DocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 
 
             addressBar.Text = webBrowser.Url.ToString();
-
+            
 
         }
 
         private void webBrowser_ProgressChange(Object sender, WebBrowserProgressChangedEventArgs e)
         {
-            ProgressBar1.Maximum =  (int)e.MaximumProgress;
-            //LoadingLabel1.Text = "Loading";
-            /*
-             ProgressBar1.Value = (int)e.CurrentProgress;*/
+            
 
-            //ProgressBar1.Maximum = 100;
-            //ProgressBar1.Minimum = 0;
+            ProgressBar1.Maximum =  (int)e.MaximumProgress;
+            
             try
             {
                 if ((e.CurrentProgress > 0))
@@ -212,21 +223,21 @@ namespace WebBrowser.UI
                 //MessageBox.Show(ex.Message);
             }
 
-            /*  try
-              {
-                  ProgressBar1.Value = Convert.ToInt32(e.CurrentProgress);
-                  ProgressBar1.Maximum = Convert.ToInt32(e.MaximumProgress);
-
-              }
-              catch
-              {
-
-              }*/
-            webBrowser.StatusTextChanged+= webBrowser_StatusTextChanged;
+     
         }
         private void webBrowser_StatusTextChanged(object sender, EventArgs e)
         {
-            //LoadingLabel1.Text = webBrowser.StatusText;
+             
+            LoadingLabel1.Text = webBrowser.StatusText;
+
+            
+        }
+
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+               System.Windows.Forms.WebBrowser;
+            webBrowser.Navigate("www.google.com");
         }
     }
 }

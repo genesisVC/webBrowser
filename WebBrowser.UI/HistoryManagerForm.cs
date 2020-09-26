@@ -24,14 +24,14 @@ namespace WebBrowser.UI
         private void HistoryManager_Load(object sender, EventArgs e)
         {
             var items = HistoryManager.GetItems();
-            //HistoryManagerList.Items.Clear();
+            
            
                 foreach (var item in items)
                 {
 
                     HistoryManagerList.Items.Add(string.Format("[{0}]--{1}-({2})", item.Date, item.Title, item.URL));
                     listCollection.Add(string.Format("[{0}]--{1}-({2})", item.Date, item.Title, item.URL));
-                    //deleteItems.Add(item.Date, item.Title, item.URL);
+                    
                 }
             }
 
@@ -58,13 +58,7 @@ namespace WebBrowser.UI
             {
                 MessageBox.Show("Item is not in list.");
             }
-            /*for (int i = HistoryManagerList.Items.Count-1; i >= 0; i--)
-            {
-                if (HistoryManagerList.Items[i].ToString().ToLower().Contains(historySearch.Text.ToLower()))
-                {
-                    HistoryManagerList.SetSelected(i, true);
-                }
-            }*/
+      
 
         }
 
@@ -90,17 +84,28 @@ namespace WebBrowser.UI
             foreach (var item in items)
             {
                 string str1 =(string.Format("[{0}]--{1}-({2})", item.Date, item.Title, item.URL));
-                if (selected.Equals(str1))
+                if (selected != null && selected.Equals(str1))
                 {
 
                    HistoryManager.DeleteItem(item);
+                   int index = listCollection.IndexOf(str1);
+                    listCollection.RemoveAt(index);
                     HistoryManagerList.Items.Remove(selected);
+                    
+                    
                 }
+               
             }
-            //deleteItems.Add(HistoryManagerList.SelectedItem);
+
+            if (selected == null)
+            {
+                MessageBox.Show("Please select item to delete");
+            }
+
             
-            
-            
+
+
+
         }
 
         private void ClearHistoryContentButton_Click(object sender, EventArgs e)
@@ -112,6 +117,7 @@ namespace WebBrowser.UI
             {
                     HistoryManager.DeleteItem(item);
                     HistoryManagerList.Items.RemoveAt(0);
+                    listCollection.Clear();
                 
             }
         }

@@ -14,7 +14,7 @@ namespace WebBrowser.UI
     public partial class BookmarkManagerForm : Form
     {
 
-        List<string> listCollection = new List<string>();
+        List<string> BookmarkCollection = new List<string>();
         public BookmarkManagerForm()
         {
             InitializeComponent();
@@ -23,14 +23,13 @@ namespace WebBrowser.UI
         private void BookmarkManagerForm_Load(object sender, EventArgs e)
         {
             var items = BookmarkManager.GetItems();
-            //var items2 = BookmarkManager.GetItems();
-            //BookmarkManagerList.Items.Clear();
+            
 
 
             foreach (var item in items)
             {
                 BookmarkManagerList.Items.Add(string.Format("{0}-({1})", item.Title, item.URL));
-                listCollection.Add(string.Format("{0}-({1})", item.Title, item.URL));
+                BookmarkCollection.Add(string.Format("{0}-({1})", item.Title, item.URL));
             }
 
            
@@ -39,7 +38,7 @@ namespace WebBrowser.UI
         private void bookmarkSearchButton_Click(object sender, EventArgs e)
         {
             BookmarkManagerList.Items.Clear();
-            foreach(string str in listCollection)
+            foreach(string str in BookmarkCollection)
             {
                 if (str.Contains(bookmarkSearch.Text))
                 {
@@ -64,11 +63,18 @@ namespace WebBrowser.UI
             foreach (var item in items)
             {
                 string str1 = (string.Format("{0}-({1})", item.Title, item.URL));
-                if (selected.Equals(str1))
+                if (selected != null && selected.Equals(str1))
                 {
                     BookmarkManager.deleteItem(item);
+                    int index = BookmarkCollection.IndexOf(str1);
+                    BookmarkCollection.RemoveAt(index);
                     BookmarkManagerList.Items.Remove(selected);
+
                 }
+            }
+            if (selected == null)
+            {
+                MessageBox.Show("Please select item to delete");
             }
         }
     }   
