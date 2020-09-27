@@ -199,8 +199,10 @@ namespace WebBrowser.UI
         private void webBrowser_DocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 
+           
+                addressBar.Text = webBrowser.Url.ToString();
+            
 
-            addressBar.Text = webBrowser.Url.ToString();
             
 
         }
