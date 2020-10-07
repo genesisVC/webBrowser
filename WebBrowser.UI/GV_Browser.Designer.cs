@@ -32,17 +32,17 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCurrentTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savePageAsHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsHTML = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPage = new System.Windows.Forms.ToolStripMenuItem();
             this.exitWebBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageBookmarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabPagesControl1 = new WebBrowser.UI.TabPagesControl();
-            this.clearHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,8 +51,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newTabToolStripMenuItem,
             this.closeCurrentTabToolStripMenuItem,
-            this.savePageAsHTMLToolStripMenuItem,
-            this.printPageToolStripMenuItem,
+            this.saveAsHTML,
+            this.printPage,
             this.exitWebBrowserToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -74,17 +74,19 @@
             this.closeCurrentTabToolStripMenuItem.Text = "Close Current Tab";
             this.closeCurrentTabToolStripMenuItem.Click += new System.EventHandler(this.closeCurrentTabToolStripMenuItem_Click);
             // 
-            // savePageAsHTMLToolStripMenuItem
+            // saveAsHTML
             // 
-            this.savePageAsHTMLToolStripMenuItem.Name = "savePageAsHTMLToolStripMenuItem";
-            this.savePageAsHTMLToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.savePageAsHTMLToolStripMenuItem.Text = "Save Page As HTML";
+            this.saveAsHTML.Name = "saveAsHTML";
+            this.saveAsHTML.Size = new System.Drawing.Size(212, 22);
+            this.saveAsHTML.Text = "Save Page As HTML";
+            this.saveAsHTML.Click += new System.EventHandler(this.saveAsHTML_Click);
             // 
-            // printPageToolStripMenuItem
+            // printPage
             // 
-            this.printPageToolStripMenuItem.Name = "printPageToolStripMenuItem";
-            this.printPageToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.printPageToolStripMenuItem.Text = "Print Page";
+            this.printPage.Name = "printPage";
+            this.printPage.Size = new System.Drawing.Size(212, 22);
+            this.printPage.Text = "Print Page";
+            this.printPage.Click += new System.EventHandler(this.printPage_Click);
             // 
             // exitWebBrowserToolStripMenuItem
             // 
@@ -106,16 +108,23 @@
             // manageHistoryToolStripMenuItem
             // 
             this.manageHistoryToolStripMenuItem.Name = "manageHistoryToolStripMenuItem";
-            this.manageHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageHistoryToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.manageHistoryToolStripMenuItem.Text = "Manage History";
             this.manageHistoryToolStripMenuItem.Click += new System.EventHandler(this.manageHistoryToolStripMenuItem_Click);
             // 
             // manageBookmarksToolStripMenuItem
             // 
             this.manageBookmarksToolStripMenuItem.Name = "manageBookmarksToolStripMenuItem";
-            this.manageBookmarksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageBookmarksToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.manageBookmarksToolStripMenuItem.Text = "Manage Bookmarks";
             this.manageBookmarksToolStripMenuItem.Click += new System.EventHandler(this.manageBookmarksToolStripMenuItem_Click);
+            // 
+            // clearHistoryToolStripMenuItem
+            // 
+            this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
+            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.clearHistoryToolStripMenuItem.Text = "Clear History";
+            this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -154,13 +163,6 @@
             this.tabPagesControl1.Size = new System.Drawing.Size(1233, 646);
             this.tabPagesControl1.TabIndex = 1;
             // 
-            // clearHistoryToolStripMenuItem
-            // 
-            this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
-            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clearHistoryToolStripMenuItem.Text = "Clear History";
-            this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearHistoryToolStripMenuItem_Click);
-            // 
             // GV_Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,8 +186,8 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeCurrentTabToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem savePageAsHTMLToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsHTML;
+        private System.Windows.Forms.ToolStripMenuItem printPage;
         private System.Windows.Forms.ToolStripMenuItem exitWebBrowserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageHistoryToolStripMenuItem;

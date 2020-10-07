@@ -199,12 +199,8 @@ namespace WebBrowser.UI
         private void webBrowser_DocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 
-           
                 addressBar.Text = webBrowser.Url.ToString();
             
-
-            
-
         }
 
         private void webBrowser_ProgressChange(Object sender, WebBrowserProgressChangedEventArgs e)
@@ -229,10 +225,8 @@ namespace WebBrowser.UI
         }
         private void webBrowser_StatusTextChanged(object sender, EventArgs e)
         {
-             
             LoadingLabel1.Text = webBrowser.StatusText;
 
-            
         }
 
         private void HomeButton_Click(object sender, EventArgs e)
@@ -240,6 +234,21 @@ namespace WebBrowser.UI
             webBrowser = tabControl1.SelectedTab.Controls[0] as
                System.Windows.Forms.WebBrowser;
             webBrowser.Navigate("www.google.com");
+        }
+
+        public void printButton_Click(object sender, EventArgs e)
+        {
+            webBrowser = tabControl1.SelectedTab.Controls[0] as
+               System.Windows.Forms.WebBrowser;
+            PrintDialog printDialog = new PrintDialog();
+
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                webBrowser.Print();
+            }
+        
+            
+           
         }
     }
 }

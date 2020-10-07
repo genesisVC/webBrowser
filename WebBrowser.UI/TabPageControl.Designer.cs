@@ -37,6 +37,7 @@
             this.addressBar = new System.Windows.Forms.ToolStripTextBox();
             this.goButton = new System.Windows.Forms.ToolStripButton();
             this.bookmarkBtn = new System.Windows.Forms.ToolStripButton();
+            this.printButton = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -58,7 +59,8 @@
             this.HomeButton,
             this.addressBar,
             this.goButton,
-            this.bookmarkBtn});
+            this.bookmarkBtn,
+            this.printButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.ShowItemToolTips = false;
@@ -134,6 +136,16 @@
             this.bookmarkBtn.Size = new System.Drawing.Size(23, 22);
             this.bookmarkBtn.Text = "bookmark";
             this.bookmarkBtn.Click += new System.EventHandler(this.bookmarkBtn_Click);
+            // 
+            // printButton
+            // 
+            this.printButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
+            this.printButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(23, 22);
+            this.printButton.Text = "toolStripButton1";
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // tabControl1
             // 
@@ -222,5 +234,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel LoadingLabel1;
         public System.Windows.Forms.ToolStripProgressBar ProgressBar1;
+        public System.Windows.Forms.ToolStripButton printButton;
     }
 }

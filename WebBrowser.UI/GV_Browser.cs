@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -23,12 +24,9 @@ namespace WebBrowser.UI
         public GV_Browser()
         {
             InitializeComponent();
-            
 
         }
 
-       
-        
         private void exitWebBrowserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,14 +39,10 @@ namespace WebBrowser.UI
                              + "Date Created: 9/2020");
         }
 
-      
-
         private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TabPagesControl tabs = new TabPagesControl();
 
-           
-            //string title = "New Tab" + (tabs.tabControl1.TabCount + 1).ToString();
             string title = "New Tab" + (tabs.tabControl1.TabCount + i++).ToString();
 
             myTabPage = new TabPage(title);
@@ -88,14 +82,29 @@ namespace WebBrowser.UI
         private void clearHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var items = HistoryManager.GetItems();
-            //int i = 0;
-           //int count = HistoryManagerList.Items.Count;
+            
             foreach (var item in items)
             {
                 HistoryManager.DeleteItem(item);
-                //HistoryManagerList.Items.RemoveAt(0);
+                
 
             }
+        }
+
+        private void saveAsHTML_Click(object sender, EventArgs e)
+        {
+            /*webBrowser = tabPagesControl1.tabControl1.SelectedTab.Controls[0] as
+               System.Windows.Forms.WebBrowser;
+            string path = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+            File.WriteAllText(path, webBrowser.Document.Body.Parent.OuterHtml, Encoding.GetEncoding(webBrowser.Document.Encoding))*/;
+        }
+
+        private void printPage_Click(object sender, EventArgs e)
+        {
+            TabPagesControl print = new TabPagesControl();
+
+            print.printButton_Click(sender, e);
+
         }
     }
 }

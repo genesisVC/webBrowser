@@ -113,13 +113,29 @@ namespace WebBrowser.UI
             var items = HistoryManager.GetItems();
             //int i = 0;
             int count = HistoryManagerList.Items.Count;
-            foreach (var item in items)
+            var selected = HistoryManagerList.SelectedItem;
+
+            try
             {
+                foreach (var item in items)
+                {
+
                     HistoryManager.DeleteItem(item);
                     HistoryManagerList.Items.RemoveAt(0);
                     listCollection.Clear();
-                
+                   
+                    
+
+
+                }
             }
+
+            catch
+            {
+                //MessageBox.Show();
+            }
+            
+
         }
     }
 }
