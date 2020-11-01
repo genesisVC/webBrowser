@@ -1,10 +1,10 @@
 # webBrowser
-## Table of contents
-* [General info](#general-info)
+## Table of Contents
+* [General info](#general-Info)
 * [Technologies](#technologies)
 * [Setup](#setup)
 
-## General info
+## General Info
 Web browser desktop application that was created using C#. App has all the basic functionalities that are available in a standard web browser. Application allows users to navigate the web, bookmark pages, print pages, as well as store and delete history. Application was built using a 3-tier architecture.
 
 ![WebBrowser pt1](https://user-images.githubusercontent.com/68570927/97813785-e7fbd580-1c4e-11eb-9539-e19f9cc7a169.gif)
