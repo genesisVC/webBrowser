@@ -1,8 +1,8 @@
 # webBrowser
 ## Table of contents
 * [General info](#general-info)
-* [Technologies] (#technologies)
-* [Setup] (#setup)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
 ## General info
 Web browser desktop application that was created using C#. App has all the basic functionalities that are available in a standard web browser. Application allows users to navigate the web, bookmark pages, print pages, as well as store and delete history. Application was built using a 3-tier architecture.
@@ -18,13 +18,17 @@ Project is created with:
 ## Setup
 To run this project:
 ### Option 1:
+
 Visit: https://genesisvc.github.io/ to download app.
+
 ### Option 2: 
+
 Ensure you have Visual Studio installed, if not visit:
+
 https://visualstudio.microsoft.com/
 
-Clone this repository
+####Clone this repository
 
 $ git clone https://github.com/genesisVC/webBrowser.git
 
-Run WebBrowser.sln
+Run #####WebBrowser.sln
