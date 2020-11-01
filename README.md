@@ -27,8 +27,8 @@ Ensure you have Visual Studio installed, if not visit:
 
 https://visualstudio.microsoft.com/
 
-####Clone this repository
+#### Clone this repository
 
 $ git clone https://github.com/genesisVC/webBrowser.git
 
-Run #####WebBrowser.sln
+Run WebBrowser.sln
